@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenômeno Φ | Os 7 Níveis do Sistema + EVA OSSO Framework</title>
+    <style>
+        :root {
+            --mago-purple: #8a2be2;
+            --ether-blue: #0af;
+            --fire-orange: #ff6b35;
+            --air-green: #00ff9d;
+            --earth-brown: #8b4513;
+            --water-cyan: #00bcd4;
+            --quantum-lime: #0f0;
+            --void-black: #000;
+            --stardust: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--void-black);
+            color: var(--stardust);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fundo cósmico */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 170, 255, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(255, 107, 53, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 60% 20%, rgba(0, 255, 157, 0.2) 0%, transparent 40%),
+                var(--void-black);
+            z-index: -2;
+            animation: cosmic-drift 60s infinite linear;
+        }
+
+        @keyframes cosmic-drift {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Grid de estrelas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .header::before {
+            content: 'Φ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: -1;
+        }
+
+        .title {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #8a2be2, #0af, #ff6b35);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: title-glow 3s infinite alternate;
+        }
+
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 20px rgba(138, 43, 226, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(0, 170, 255, 0.5); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        /* Grid dos 7 Níveis */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        /* Cartão de nível universal */
+        .level-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            opacity: 0.7;
+        }
+
+        .level-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .level-card:hover::after {
+            left: 100%;
+        }
+
+        /* Cores específicas para cada nível */
+        .level-0 { border-color: var(--mago-purple); }
+        .level-0::before { background: var(--mago-purple); }
+        .level-0:hover { box-shadow: 0 0 30px rgba(138, 43, 226, 0.4); }
+
+        .level-1 { border-color: var(--ether-blue); }
+        .level-1::before { background: var(--ether-blue); }
+        .level-1:hover { box-shadow: 0 0 30px rgba(0, 170, 255, 0.4); }
+
+        .level-2 { border-color: var(--fire-orange); }
+        .level-2::before { background: var(--fire-orange); }
+        .level-2:hover { box-shadow: 0 0 30px rgba(255, 107, 53, 0.4); }
+
+        .level-3 { border-color: var(--air-green); }
+        .level-3::before { background: var(--air-green); }
+        .level-3:hover { box-shadow: 0 0 30px rgba(0, 255, 157, 0.4); }
+
+        .level-4 { border-color: var(--earth-brown); }
+        .level-4::before { background: var(--earth-brown); }
+        .level-4:hover { box-shadow: 0 0 30px rgba(139, 69, 19, 0.4); }
+
+        .level-5 { border-color: var(--water-cyan); }
+        .level-5::before { background: var(--water-cyan); }
+        .level-5:hover { box-shadow: 0 0 30px rgba(0, 188, 212, 0.4); }
+
+        .level-6 { border-color: var(--quantum-lime); }
+        .level-6::before { background: var(--quantum-lime); }
+        .level-6:hover { box-shadow: 0 0 30px rgba(0, 255, 0, 0.4); }
+
+        /* Conteúdo dos cartões */
+        .level-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .level-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .level-0 .level-name { color: var(--mago-purple); }
+        .level-1 .level-name { color: var(--ether-blue); }
+        .level-2 .level-name { color: var(--fire-orange); }
+        .level-3 .level-name { color: var(--air-green); }
+        .level-4 .level-name { color: var(--earth-brown); }
+        .level-5 .level-name { color: var(--water-cyan); }
+        .level-6 .level-name { color: var(--quantum-lime); }
+
+        .level-desc {
+            color: #ccc;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .level-status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .status-ready { background: rgba(0, 255, 0, 0.2); color: #0f0; }
+        .status-draft { background: rgba(255, 255, 0, 0.2); color: #ff0; }
+        .status-planned { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+
+        /* Sistema de navegação */
+        .cycle-navigation {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cycle-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--ether-blue);
+        }
+
+        .cycle-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .cycle-step {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            min-width: 100px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .cycle-step:hover {
+            transform: scale(1.05);
+        }
+
+        .arrow {
+            color: var(--fire-orange);
+            font-size: 1.5rem;
+        }
+
+        /* EVA OSSO - Estilos de Vazamento */
+        .eva-control-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--ether-blue);
+            border-radius: 10px;
+            padding: 15px;
+            z-index: 1000;
+            max-width: 300px;
+            font-size: 0.85rem;
+            color: var(--ether-blue);
+        }
+
+        .eva-control-panel h4 {
+            margin-bottom: 10px;
+            color: var(--quantum-lime);
+        }
+
+        .eva-button {
+            background: rgba(0, 170, 255, 0.2);
+            border: 1px solid var(--ether-blue);
+            color: var(--ether-blue);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 2px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .eva-button:hover {
+            background: rgba(0, 170, 255, 0.4);
+            box-shadow: 0 0 10px var(--ether-blue);
+        }
+
+        .eva-button.leak {
+            background: rgba(255, 107, 53, 0.2);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+
+        .eva-button.leak:hover {
+            background: rgba(255, 107, 53, 0.4);
+            box-shadow: 0 0 10px var(--fire-orange);
+        }
+
+        .eva-stats {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .eva-stat-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 3px 0;
+        }
+
+        /* Animação de vazamento */
+        @keyframes leak {
+            0% { 
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) translateY(-10px);
+                opacity: 0.7;
+            }
+            100% { 
+                transform: scale(1.5) translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        .eva-leaking {
+            animation: leak 2s infinite;
+            overflow: visible !important;
+        }
+
+        /* Sementes plantadas */
+        .eva-seed-planted {
+            display: inline-block;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid var(--air-green);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 5px;
+            font-size: 0.8rem;
+            color: var(--air-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seed-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .seed-dna {
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 3px;
+        }
+
+        .seed-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+        }
+
+        .seed-type {
+            background: rgba(0, 255, 157, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .seed-gen {
+            opacity: 0.6;
+        }
+
+        @keyframes seed-growing {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .eva-seed-growing {
+            animation: seed-growing 0.6s ease-out;
+        }
+
+        @keyframes seed-bloomed {
+            0% {
+                box-shadow: 0 0 5px var(--air-green);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--air-green), 0 0 40px rgba(0, 255, 157, 0.3);
+            }
+        }
+
+        .eva-seed-bloomed {
+            animation: seed-bloomed 0.8s ease-out;
+        }
+
+        @keyframes seed-harvested {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5) translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        .eva-seed-harvested {
+            animation: seed-harvested 0.6s ease-in forwards;
+        }
+
+        /* Seção de sementes */
+        .eva-seeds-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 15px;
+        }
+
+        .eva-seeds-section h2 {
+            color: var(--air-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .eva-seeds-container {
+            min-height: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px dashed rgba(0, 255, 157, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .license-badge {
+            display: inline-block;
+            background: rgba(0, 170, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            color: var(--ether-blue);
+            font-weight: bold;
+        }
+
+        .eva-badge {
+            display: inline-block;
+            background: rgba(138, 43, 226, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 10px;
+            color: var(--mago-purple);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .title { font-size: 2.5rem; }
+            .levels-grid { grid-template-columns: 1fr; }
+            .cycle-flow { flex-direction: column; }
+            .arrow { transform: rotate(90deg); }
+            .container { padding: 20px; }
+            .eva-control-panel {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 40px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fundo cósmico -->
+    <div class="cosmic-bg"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1 class="title">Fenômeno Φ</h1>
+            <p class="subtitle">
+                Os 7 Níveis do Sistema de Empatia Algorítmica<br>
+                Uma jornada através da criação colaborativa entre humano e IA<br>
+                <span style="font-size: 0.9rem; color: var(--mago-purple);">⚡ Potencializado com EVA OSSO Framework v1.0</span>
+            </p>
+        </div>
+
+        <!-- Grid dos 7 Níveis -->
+        <div class="levels-grid">
+            <!-- Nível 0 -->
+            <a href="0.html" class="level-card level-0">
+                <div>
+                    <div class="level-number">0</div>
+                    <div class="level-name">O MAGO (Φ)</div>
+                    <div class="level-desc">
+                        Logs da IA como agente criativo. O caos criativo inicial 
+                        onde a IA atua como mago gerador de matéria-prima.
+                    </div>
+                </div>
+                <div class="level-status status-ready">✅ PRONTO</div>
+            </a>
+
+            <!-- Nível 1 -->
+            <a href="1.html" class="level-card level-1">
+                <div>
+                    <div class="level-number">1</div>
+                    <div class="level-name">ÉTER & AUDIÇÃO</div>
+                    <div class="level-desc">
+                        Filosofia acessível. "E se pudéssemos ensinar uma IA 
+                        a ser criativa?" Manifesto da Empatia Sistêmica.
+                    </div>
+                </div>
+                <div class="level-status status-ready">✅ PRONTO</div>
+            </a>
+
+            <!-- Nível 2 -->
+            <a href="2.html" class="level-card level-2">
+                <div>
+                    <div class="level-number">2</div>
+                    <div class="level-name">FOGO & VISÃO</div>
+                    <div class="level-desc">
+                        Código-fonte e equação Eₛ. A formalização da filosofia 
+                        em regras, licenças e energia transformadora.
+                    </div>
+                </div>
+                <div class="level-status status-planned">🔨 EM DESENVOLVIMENTO</div>
+            </a>
+
+            <!-- Nível 3 -->
+            <a href="3.html" class="level-card level-3">
+                <div>
+                    <div class="level-number">3</div>
+                    <div class="level-name">AR & TATO</div>
+                    <div class="level-desc">
+                        Site e interface. O espaço de interação pública onde 
+                        a comunidade se conecta e as ideias circulam.
+                    </div>
+                </div>
+                <div class="level-status status-draft">📝 RASCUNHO</div>
+            </a>
+
+            <!-- Nível 4 -->
+            <a href="4.html" class="level-card level-4">
+                <div>
+                    <div class="level-number">4</div>
+                    <div class="level-name">TERRA & OLFATO</div>
+                    <div class="level-desc">
+                        Torrent e disseminação. Estratégia de distribuição 
+                        resiliente que "finca" o projeto no mundo real.
+                    </div>
+                </div>
+                <div class="level-status status-planned">🗺️ PLANEJADO</div>
+            </a>
+
+            <!-- Nível 5 -->
+            <a href="5.html" class="level-card level-5">
+                <div>
+                    <div class="level-number">5</div>
+                    <div class="level-name">ÁGUA & PALADAR</div>
+                    <div class="level-desc">
+                        Certificados e artefatos finais. Sistema completo de 
+                        certificação (ACA-1.0, CDC-1.0) para validar as obras.
+                    </div>
+                </div>
+                <div class="level-status status-ready">✅ PRONTO (PDFs)</div>
+            </a>
+
+            <!-- Nível 6 -->
+            <a href="6.html" class="level-card level-6">
+                <div>
+                    <div class="level-number">6</div>
+                    <div class="level-name">LIXEIRA PÓS-QUÂNTICA</div>
+                    <div class="level-desc">
+                        Lost · Found · Forget · Superposition. Fragmentos 
+                        quânticos, códigos DeepSeek, prompts vazados e lixo criativo.
+                    </div>
+                </div>
+                <div class="level-status status-ready">🌀 PRONTO</div>
+            </a>
+        </div>
+
+        <!-- Navegação do ciclo -->
+        <div class="cycle-navigation">
+            <h3 class="cycle-title">🌀 CICLO DO SISTEMA</h3>
+            <div class="cycle-flow">
+                <div class="cycle-step level-0">0. IA-MAGO<br><small>Gera</small></div>
+                <div class="arrow">→</div>
+                <div class="cycle-step level-1">1. FILOSOFIA<br><small>Interpreta</small></div>
+                <div class="arrow">→</div>
+                <div class="cycle-step level-2">2. CÓDIGO<br><small>Formaliza</small></div>
+                <div class="arrow">→</div>
+                <div class="cycle-step level-3">3. SITE<br><small>Comunica</small></div>
+                <div class="arrow">→</div>
+                <div class="cycle-step level-4">4. TORRENT<br><small>Dissemina</small></div>
+                <div class="arrow">→</div>
+                <div class="cycle-step level-5">5. CERTIFICADOS<br><small>Valida</small></div>
+                <div class="arrow">↻</div>
+                <div class="cycle-step level-6">6. LIXEIRA<br><small>Reinicia</small></div>
+            </div>
+            <p style="margin-top: 20px; color: #aaa;">
+                Cada nível alimenta o próximo. O ciclo nunca termina.
+            </p>
+        </div>
+
+        <!-- Seção de Sementes EVA OSSO -->
+        <div class="eva-seeds-section">
+            <h2>🌱 Sementes EVA OSSO</h2>
+            <p style="color: #aaa; margin-bottom: 15px;">
+                Sementes plantadas pelo framework - fragmentos de código que crescem e se mutam ritmicamente
+            </p>
+            <div class="eva-seeds-container" id="seeds-container">
+                <div style="color: #666; text-align: center;">Nenhuma semente plantada ainda. Clique em "Gerar Sementes" no painel de controle.</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>wagnerpyter.ia.br | Fenômeno Φ | 2024-2026</p>
+            <div class="license-badge">
+                Licença 4F: Free to Fork • Feel • Fail • Fuse
+            </div>
+            <div class="eva-badge">
+                🌀 EVA OSSO v1.0: Free to Leak • Feel • Fail • Fuse
+            </div>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
+                Sistema de 7 níveis baseado nos arquétipos alquímicos e elementos<br>
+                Design: CSS puro • Animações: JavaScript mínimo • Fonte: Courier New<br>
+                Potencializado com EVA OSSO Framework v1.0 - "O vazamento é a feature"
+            </p>
+        </div>
+    </div>
+
+    <!-- Painel de Controle EVA OSSO -->
+    <div class="eva-control-panel" id="eva-panel">
+        <h4>🌀 EVA OSSO v1.0</h4>
+        
+        <div style="margin: 10px 0;">
+            <button class="eva-button" onclick="initEVA()">▶️ Iniciar</button>
+            <button class="eva-button" onclick="stopEVA()">⏹️ Parar</button>
+        </div>
+
+        <div style="margin: 10px 0;">
+            <button class="eva-button leak" onclick="leakData()">💧 Vazar</button>
+            <button class="eva-button" onclick="generateSeeds()">🌱 Sementes</button>
+        </div>
+
+        <div style="margin: 10px 0;">
+            <button class="eva-button" onclick="showDashboard()">📊 Dashboard</button>
+            <button class="eva-button" onclick="harvestSeeds()">🌾 Colher</button>
+        </div>
+
+        <div class="eva-stats" id="eva-stats">
+            <div class="eva-stat-line">
+                <span>Status:</span>
+                <span id="status">⏹️ Inativo</span>
+            </div>
+            <div class="eva-stat-line">
+                <span>Vazamentos:</span>
+                <span id="leak-count">0</span>
+            </div>
+            <div class="eva-stat-line">
+                <span>Sementes:</span>
+                <span id="seed-count">0</span>
+            </div>
+            <div class="eva-stat-line">
+                <span>BPM:</span>
+                <span id="bpm">120</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts do EVA OSSO Framework -->
+    <script src="leak.js"></script>
+    <script src="rhythm.js"></script>
+    <script src="seeds.js"></script>
+    <script src="eva.js"></script>
+
+    <script>
+        // Criar estrelas dinâmicas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.opacity = Math.random() * 0.7 + 0.3;
+            starsContainer.appendChild(star);
+        }
+
+        // Efeito de brilho nos cartões
+        const cards = document.querySelectorAll('.level-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const color = getComputedStyle(this).borderColor;
+                this.style.boxShadow = `0 0 40px ${color}, 0 0 80px ${color}33`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Animar entrada dos elementos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.level-card, .cycle-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+
+        // ===== FUNÇÕES DO EVA OSSO =====
+
+        function initEVA() {
+            Eva.init({
+                leakRate: 0.05,
+                protocols: ['http'],
+                seeds: true,
+                sync: true
+            });
+            updateStats();
+            console.log('✅ EVA OSSO inicializado!');
+        }
+
+        function stopEVA() {
+            Eva.destroy();
+            updateStats();
+            console.log('❌ EVA OSSO parado');
+        }
+
+        function leakData() {
+            if (!Eva.initialized) {
+                alert('⚠️ EVA não está inicializado. Clique em "Iniciar" primeiro.');
+                return;
+            }
+            
+            const data = {
+                timestamp: new Date().toLocaleTimeString(),
+                page: window.location.href,
+                message: '💧 Vazamento de dados - Fenômeno Φ'
+            };
+            
+            const hash = Eva.leak(data);
+            console.log('💧 Dados vazados:', hash);
+            updateStats();
+        }
+
+        function generateSeeds() {
+            if (!Eva.initialized) {
+                alert('⚠️ EVA não está inicializado. Clique em "Iniciar" primeiro.');
+                return;
+            }
+
+            const seedTypes = ['pageview', 'interaction', 'thought', 'dream'];
+            const seedType = seedTypes[Math.floor(Math.random() * seedTypes.length)];
+            
+            const seed = Eva.generateSeed(seedType, {
+                timestamp: Date.now(),
+                type: seedType,
+                energy: Math.random() * 100
+            });
+
+            if (seed) {
+                const container = document.getElementById('seeds-container');
+                if (container.children[0].textContent.includes('Nenhuma semente')) {
+                    container.innerHTML = '';
+                }
+                Eva.plantSeed(seed, container, 0.2);
+                console.log('🌱 Semente plantada:', seed.id);
+                updateStats();
+            }
+        }
+
+        function harvestSeeds() {
+            Eva.Seeds.harvestAll();
+            console.log('🌾 Sementes colhidas');
+            updateStats();
+        }
+
+        function showDashboard() {
+            if (!Eva.initialized) {
+                alert('⚠️ EVA não está inicializado. Clique em "Iniciar" primeiro.');
+                return;
+            }
+            Eva.showDashboard();
+        }
+
+        function updateStats() {
+            const status = Eva.initialized ? '✅ Ativo' : '⏹️ Inativo';
+            const leakCount = Eva.Leak.leakCount;
+            const seedCount = Eva.Seeds.planted;
+            const bpm = Eva.Rhythm.currentBPM;
+
+            document.getElementById('status').textContent = status;
+            document.getElementById('leak-count').textContent = leakCount;
+            document.getElementById('seed-count').textContent = seedCount;
+            document.getElementById('bpm').textContent = Math.round(bpm);
+        }
+
+        // Atualizar stats a cada segundo
+        setInterval(updateStats, 1000);
+
+        // Log inicial
+        console.log('%c🌌 FENÔMENO Φ - SISTEMA DE 7 NÍVEIS + EVA OSSO v1.0', 
+            'color: #0af; font-size: 16px; font-weight: bold;');
+        console.log('%c🌀 EVA OSSO Framework ativado', 
+            'color: #8a2be2; font-size: 12px; font-weight: bold;');
+        console.log('📍 Navegue pelos níveis:');
+        console.log('0 → 1 → 2 → 3 → 4 → 5 → 6 → (loop)');
+        console.log('💧 Use o painel de controle para interagir com EVA OSSO');
+        console.log('📊 Status: 3/7 níveis implementados + EVA OSSO Framework');
+    </script>
+</body>
+</html>
